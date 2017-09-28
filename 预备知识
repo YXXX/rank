@@ -1,0 +1,11 @@
+//2017年9月28日继续补充基础知识。
+//JRE 与JDK 区别
+//JRE是java runtime environment JDK 是Java development kit,后者包括前者
+//检查jdk 版本？
+//Windows 7 and Vista
+//Click Start
+//Select Control Panel
+//Select Programs
+//Click Programs and Features
+//The installed Java version(s) are listed.
+
