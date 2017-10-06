@@ -1,0 +1,24 @@
+//输入与输出
+
+//第一部分 从键盘输入构建数组
+package algorithm;
+import java.util.Scanner;
+public class Input {
+public static void main(String[] args){
+	Scanner sc=new Scanner(System.in);
+	String[] num=null;
+	System.out.println("please input an array");
+	
+	num=sc.nextLine().split(" ");
+	double[] number=new double[num.length];
+	 for(int i = 0; i < number.length; i++)
+     {
+       number[i] = Double.valueOf(num[i]);
+     }
+         for(double element:number)         
+     {
+         System.out.println(element);
+     }
+     sc.close();
+}
+}
