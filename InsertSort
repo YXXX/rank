@@ -1,0 +1,72 @@
+//插入排序的优点是具有空间原址性，只需要常数个额外的存储空间即可完成排序。
+//但是插入排序的算法性能不是很好，需要O(n^2)
+//插入排序的在小规模问题是，运行时间可能是优于归并排序的
+//插入排序有两个遍历 
+//外层的循环遍历第二个元素到最后一个元素
+//内层遍历已有顺序的数组，将key插入
+//插入排序的java代码
+package algorithm;
+import java.util.Scanner;
+public class InsertSort {
+	double [] array;
+	public InsertSort(double[] array1){
+		array=array1;	//存放对象的变量
+	}
+	public double[] Sort_I(){//排序方法一，升序排列
+	
+		int L=array.length;
+		System.out.println(L);
+		for(int j=1;j<L;j++){
+			double key=array[j];
+			int i=j-1;
+		while(i>=0 && array[i]>key){
+			array[i+1]=array[i];
+			i=i-1;
+		}
+		array[i+1]=key;
+		}
+		return array;
+	}
+	public double[] Sort_D(){//排序方法二，降序排列
+		
+		int L=array.length;
+		System.out.println(L);
+		for(int j=1;j<L;j++){
+			double key=array[j];
+			int i=j-1;
+		while(i>=0 && array[i]<key){
+			array[i+1]=array[i];
+			i=i-1;
+		}
+		array[i+1]=key;
+		}
+		return array;
+	}
+	
+public static void main(String[] args){
+	Scanner  sc=new Scanner(System.in);
+	String[] num=null;
+	System.out.println("please input something");
+	
+	num=sc.nextLine().split(" ");
+	double[] number=new double[num.length];
+	 for(int i = 0; i < number.length; i++)
+    {
+      number[i] = Double.valueOf(num[i]);
+    }//从键盘构造数组
+	 
+	 InsertSort obj1=new InsertSort(number);
+	 
+	 obj1.Sort_I();
+	 for(double element:obj1.array){
+	 System.out.println(element);
+	 }
+   //调用排序方法一，输出
+	 obj1.Sort_D();
+	 for(double element:obj1.array){
+	 System.out.println(element);
+	 }
+   //调用排序方法二，输出
+	 sc.close();
+}
+}
