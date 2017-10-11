@@ -1,3 +1,56 @@
 //快速排序的缺点是在最糟糕的情况下很差，每次分割都分成一空一满
 //快速排序的平均性能最好
 //快速排序的关键是分划
+package algorithm;
+import java.util.Scanner;
+public class QuickSort {
+ public double[] array;
+ 
+ public QuickSort(double[] array1){
+	 array=array1;
+ }
+ public int Partion(int p,int r){
+	 double x= array[r];
+	 int i=p-1;
+	 double exchange=0;
+	 for(int j=p;j<=r-1;j++){
+		 if(array[j]<=x){
+			 i=i+1;
+			 exchange=array[j];
+			 array[j]=array[i];
+			 array[i]=exchange;
+		 }
+	
+	 }
+	 exchange=array[r];
+	 array[r]=array[i+1];
+   	 array[i+1]=exchange;
+	 return i+1; 
+ }
+ public void Sort(int p,int r){
+	 if(p<r){
+		 int q=Partion(p,r);
+		 Sort(p,q-1);
+		 Sort(q+1,r);
+	 }
+	 
+ }
+public static void main(String[] args){
+	Scanner sc=new Scanner(System.in);
+	String[] num=null;
+	System.out.println("please input something");
+	num=sc.nextLine().split(" ");
+	double[] number =new double[num.length];
+	for(int i=0;i<num.length;i++){
+		number[i]=Double.valueOf(num[i]);
+		
+	}
+	QuickSort obj1=new QuickSort(number);
+	obj1.Sort(0,number.length-1);
+	for(double element : obj1.array){
+		System.out.println(element);
+		
+	}
+	sc.close();
+}
+}
