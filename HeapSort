@@ -1,0 +1,97 @@
+// 堆排序
+package algorithm;
+import java.util.Scanner;
+
+public class heapSort {
+	
+	public double[] heaparray;
+	public int heapsize;
+	
+	public heapSort(double[] array){
+		heaparray=array;
+		heapsize=array.length;
+	}
+	
+	public void buildMaxHeap(){
+		int i=heapsize/2;
+		for(;i>0;i--){
+			maxHeap(i);		
+		}
+		
+	}
+	
+	public void maxHeap(int i){
+		int l=left(i);
+		int r=right(i);
+		int largest;
+		if(l<=heapsize && heaparray[l-1]>heaparray[i-1]){
+			largest=l;
+		}else{
+			largest=i;
+		}
+		if(r<=heapsize && heaparray[r-1]>heaparray[largest-1]){
+			largest=r;
+		}
+		
+		if(largest!=i){
+			double exchange;
+			exchange=heaparray[i-1];
+			heaparray[i-1]=heaparray[largest-1];
+			heaparray[largest-1]=exchange;
+			
+		}
+	}
+	
+	public void sort(){
+		buildMaxHeap();
+		double exchange;
+		for(int i=heapsize;i>1;i--){
+			exchange=heaparray[0];
+			heaparray[0]=heaparray[i-1];
+			heaparray[i-1]=exchange;
+			heapsize=heapsize-1;
+			maxHeap(1);
+		}
+		
+	}
+	
+	
+	public int parent(int i){
+		return i/2;
+	}
+	
+	public int left(int i){
+		return 2*i;
+
+	}
+	
+	public int right(int i){
+		return 2*i+1;
+	}
+	
+	
+	
+	public static void main(String[] args){
+		//从键盘创建一个数组
+		Scanner sc=new Scanner(System.in);
+		String[] num=null;
+		System.out.println("please input an array");
+		
+		num=sc.nextLine().split(" ");
+		double[] number=new double[num.length];
+		 for(int i = 0; i < number.length; i++)
+	     {
+	       number[i] = Double.valueOf(num[i]);
+	     }
+		 
+		 //创建堆排序对象，进行排序
+		 heapSort hSort=new heapSort(number);
+		 hSort.sort();
+	         for(double element:number)         
+	     {
+	         System.out.println(element);
+	     }
+	     sc.close();
+	}
+
+}
